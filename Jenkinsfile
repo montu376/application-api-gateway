@@ -4,20 +4,12 @@ pipeline{
 
 
     stages{
-
-        stages {
-            stage('Printing msg'){
-                steps {
-                 sh 'echo "hello world"'
-                }
+        stage('Printing msg'){
+            steps {
+                sh 'echo "hello world"'
             }
-            
         }
-
-
     }
-
-
 
 
 }
