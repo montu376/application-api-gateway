@@ -5,9 +5,9 @@ pipeline{
 
     stages{
 
-        stages("build"){
-            stage{
-                steps('Printing msg') {
+        stages {
+            stage('Printing msg'){
+                steps {
                  sh 'echo "hello world"'
                 }
             }
