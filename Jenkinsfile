@@ -10,12 +10,12 @@ pipeline{
             }
         }
 
-        stage('docker test'){
-            agent docker
-            steps {
-                sh 'docker images'
-            }
-        }
+        // stage('docker test'){
+        //     agent docker
+        //     steps {
+        //         sh 'docker images'
+        //     }
+        // }
     }
 
 
