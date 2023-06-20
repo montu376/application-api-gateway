@@ -5,10 +5,13 @@ pipeline{
 
     stages{
 
-        stage("build"){
-            step {
-                sh 'echo "hello world"'
+        stages("build"){
+            stage{
+                steps('Printing msg') {
+                 sh 'echo "hello world"'
+                }
             }
+            
         }
 
 
