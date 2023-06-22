@@ -2,12 +2,13 @@ pipeline{
     agent any
     
     stages{
-        stage('Printing msg'){
+        stage('Building Image and dockerzing it'){
             agent {
-                label 'montuUbuntu'
+                label 'docker-ubuntu'
             }
             steps {
                 sh 'mvn package'
+                sh 'docker build -t montud/application-api-gateway:latest .'
             }
 
             post{
@@ -17,8 +18,6 @@ pipeline{
                 }        
             }
         } 
-
-
 
         stage('docker test'){
             agent {
