@@ -7,9 +7,16 @@ pipeline{
                 label 'montuUbuntu'
             }
             steps {
-                sh 'mvn package -DskipTests'
-                archiveArtifacts artifacts: 'target/*.jar'
+                sh 'mvn package'
             }
+        }
+        post{
+            always{
+                archiveArtifacts artifacts: 'target/*.jar'
+                junit 'build/reports/**/*.xml'
+
+            }
+            
         }
        
         stage('docker test'){
