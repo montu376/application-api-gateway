@@ -20,10 +20,12 @@ pipeline{
         }
     }
     post{
+        agent {
+            label 'montuUbuntu'
+        }
         always{
             archiveArtifacts artifacts: 'target/*.jar'
             junit 'build/reports/**/*.xml'
-
         }
             
     }
