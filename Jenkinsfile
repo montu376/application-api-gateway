@@ -8,8 +8,10 @@ pipeline{
             }
             steps {
                 sh 'mvn package -DskipTests'
+                archiveArtifacts artifacts: 'target/*.jar'
             }
         }
+       
         stage('docker test'){
             agent {
                 label 'docker-ubuntu'
