@@ -9,7 +9,17 @@ pipeline{
             steps {
                 sh 'mvn package'
             }
-        }   
+
+            post{
+                success{
+                    archiveArtifacts artifacts: 'target/*.jar'
+                    junit 'build/reports/**/*.xml'
+                }        
+            }
+        } 
+
+
+
         stage('docker test'){
             agent {
                 label 'docker-ubuntu'
@@ -19,16 +29,7 @@ pipeline{
             }
         }
     }
-    post{
-        always{
-            agent {
-                label 'montuUbuntu'
-            }
-            archiveArtifacts artifacts: 'target/*.jar'
-            junit 'build/reports/**/*.xml'
-        }
-            
-    }
+    
 
 
 }
