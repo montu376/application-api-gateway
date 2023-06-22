@@ -31,7 +31,7 @@ pipeline{
 
         stage('Kubernates deploy'){
             steps {
-                cmd 'kubectl apply -f deploy.yaml'
+                bat 'kubectl.exe apply -f deploy.yaml'
             }
         }
     }
