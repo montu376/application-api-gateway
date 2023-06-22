@@ -8,7 +8,7 @@ pipeline{
             }
             steps {
                 sh 'mvn package'
-                sh 'sudo docker build -t montud/application-api-gateway:latest .'
+                sh 'docker build -t montud/application-api-gateway:latest .'
             }
 
             post{
