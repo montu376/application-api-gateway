@@ -7,7 +7,7 @@ pipeline{
                 label 'montuUbuntu'
             }
             steps {
-                sh 'echo "hello world"'
+                sh 'mvn package -DskipTests'
             }
         }
         stage('docker test'){
