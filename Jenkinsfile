@@ -19,12 +19,12 @@ pipeline{
             }
         } 
 
-        stage('docker test'){
+        stage('docker push'){
             agent {
                 label 'docker-ubuntu'
             }
             steps {
-                sh 'docker images'
+                sh 'docker push montud/application-api-gateway:latest'
             }
         }
     }
