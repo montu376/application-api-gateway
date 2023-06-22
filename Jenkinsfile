@@ -27,6 +27,13 @@ pipeline{
                 sh 'docker push montud/application-api-gateway:latest'
             }
         }
+
+
+        stage('Kubernates deploy'){
+            steps {
+                cmd 'kubectl apply -f deploy.yaml'
+            }
+        }
     }
     
 
