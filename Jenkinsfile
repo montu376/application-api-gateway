@@ -13,7 +13,7 @@ pipeline{
             post{
                 success{
                     archiveArtifacts artifacts: 'target/*.jar'
-                    junit 'build/reports/**/*.xml'
+                    junit 'surefire-reports/**/*.xml'
                 }        
             }
         } 
