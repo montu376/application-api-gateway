@@ -8,13 +8,13 @@ pipeline{
             }
             steps {
                 sh 'mvn package'
-                sh 'docker build -t montud/application-api-gateway:latest .'
+                sh 'sudo docker build -t montud/application-api-gateway:latest .'
             }
 
             post{
                 success{
                     archiveArtifacts artifacts: 'target/*.jar'
-                    junit 'surefire-reports/*.xml'
+                    
                 }        
             }
         } 
