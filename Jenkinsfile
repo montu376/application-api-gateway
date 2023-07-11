@@ -15,6 +15,9 @@ pipeline{
         } 
 
         stage('docker push'){
+            agent{
+                label 'montuUbuntu'
+            }
             steps {
                 sh 'docker push montud/application-api-gateway:latest'
             }
