@@ -1,26 +1,26 @@
 server:
-  port: 8085
+  port: ${server.port}
 
 spring:
   application:
-    name: api-gateway
+    name: ${spring.application.name}
   cloud:
     gateway:
       routes:
-        - id: LIBRARYADMIN
-          uri: lb://LIBRARYADMIN
+        - id: ${spring.cloud.gateway.libraryadmin.route.id}
+          uri: ${spring.cloud.gateway.libraryadmin.route.uri}
           predicates:
-          - Path=/api/admin/**
+          - Path=${spring.cloud.gateway.libraryadmin.route.predicates}
           
-        - id: BOOKCATALOG
-          uri: lb://BOOKCATALOG
+        - id: ${spring.cloud.gateway.bookcatalog.route.id}
+          uri: ${spring.cloud.gateway.bookcatalog.route.uri}
           predicates:
-          - Path=/api/book/**
+          - Path=${spring.cloud.gateway.bookcatalog.route.predicates}
           
-        - id: BOOKCATALOG
-          uri: lb://USERS
+        - id: ${spring.cloud.gateway.users.route.id}
+          uri: ${spring.cloud.gateway.users.route.uri}
           predicates:
-          - Path=/api/user/**
+          - Path=${spring.cloud.gateway.users.route.predicates}
           
           
 management:

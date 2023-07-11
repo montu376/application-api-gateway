@@ -5,7 +5,7 @@ metadata:
   labels: 
     env: test
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       env: test  
@@ -19,5 +19,24 @@ spec:
           image: montud/application-api-gateway:latest
           ports:
             - containerPort: 8080
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-api-gateway-config
+data:
+  server.port: "8085"
+  spring.application.name: "api-gateway"
+  spring.cloud.gateway.libraryadmin.route.id: "LIBRARYADMIN"
+  spring.cloud.gateway.libraryadmin.route.uri: "lb://LIBRARYADMIN"
+  spring.cloud.gateway.libraryadmin.route.predicates: "/api/admin/**"
+  spring.cloud.gateway.bookcatalog.route.id: "BOOKCATALOG"
+  spring.cloud.gateway.bookcatalog.route.uri: "lb://BOOKCATALOG"
+  spring.cloud.gateway.bookcatalog.route.predicates: "/api/book/**"
+  spring.cloud.gateway.users.route.id: "USERS"
+  spring.cloud.gateway.users.route.uri: "lb://USERS"
+  spring.cloud.gateway.users.route.predicates: "/api/user/**"
+
             
 

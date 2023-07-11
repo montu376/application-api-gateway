@@ -8,7 +8,7 @@ pipeline{
                 label 'montuUbuntu'
             }
             steps {
-                sh 'mvn package'
+                sh 'mvn package' 
                 sh 'docker build -t montud/application-api-gateway:latest .'
             }
 
