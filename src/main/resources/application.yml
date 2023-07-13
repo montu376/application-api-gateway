@@ -32,6 +32,6 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://microservice-discovery:8761/eureka
+      defaultZone: ${MICROSERVICE_DISCOVERY_PORT_8761_TCP}/eureka
     fetch-registry: true
     register-with-eureka: true
