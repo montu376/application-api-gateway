@@ -31,7 +31,9 @@ management:
     
 eureka:
   client:
-    service-url:
-      defaultZone: http://${MICROSERVICE_DISCOVERY_PORT_8761_TCP_ADDR}:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    ip-address: ${MICROSERVICE_DISCOVERY_PORT_8761_TCP_ADDR}
+    non-secure-port: 8761
