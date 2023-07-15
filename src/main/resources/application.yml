@@ -33,7 +33,4 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
-  instance:
-    prefer-ip-address: true
-    ip-address: ${MICROSERVICE_DISCOVERY_PORT_8761_TCP_ADDR}
-    non-secure-port: 8761
+    eureka-server-d-n-s-name: microservice-discovery.default.svc.cluster.local
