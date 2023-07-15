@@ -29,7 +29,7 @@ pipeline{
                 label 'microkube'
             }
             steps {
-                bat 'microk8s kubectl apply -f deploy.yml'
+                sh 'microk8s kubectl apply -f deploy.yml'
             }
         }
     }
