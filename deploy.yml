@@ -14,6 +14,10 @@ spec:
       labels: 
         env: test
     spec:
+      volumes:
+       - name: config
+         configMap:
+          name: application-api-gateway-config
       containers:
         - name:  application-api-gateway
           image: montud/application-api-gateway:latest
