@@ -9,12 +9,11 @@ pipeline{
     stages{
         stage('Building Image and dockerzing it'){
 
-            tools{
-                git 'linuxgit'
-            }
-
             agent{
                 label 'montuUbuntu'
+            }
+            tools{
+                git 'linuxgit'
             }
             steps {
                 sh 'mvn package -DskipTests' 
@@ -24,12 +23,14 @@ pipeline{
         } 
 
         stage('docker push'){
-            tools{
-                git 'linuxgit'
-            }
+            
 
             agent{
                 label 'montuUbuntu'
+            }
+
+             tools{
+                git 'linuxgit'
             }
             steps {
                 sh 'docker push montud/application-api-gateway:latest'
@@ -38,12 +39,14 @@ pipeline{
 
 
         stage('Kubernates deploy'){
-            tools{
-                git 'linuxgit'
-            }
+            
 
             agent{
                 label 'microkube'
+            }
+
+             tools{
+                git 'linuxgit'
             }
             steps {
                 sh 'microk8s kubectl apply -f deploy.yml'
