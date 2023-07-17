@@ -1,8 +1,17 @@
 pipeline{
     agent any
     
+    tools{
+        git 'git'
+    }
+
+    
     stages{
         stage('Building Image and dockerzing it'){
+
+            tools{
+                git 'linuxgit'
+            }
 
             agent{
                 label 'montuUbuntu'
@@ -15,6 +24,10 @@ pipeline{
         } 
 
         stage('docker push'){
+            tools{
+                git 'linuxgit'
+            }
+
             agent{
                 label 'montuUbuntu'
             }
@@ -25,6 +38,10 @@ pipeline{
 
 
         stage('Kubernates deploy'){
+            tools{
+                git 'linuxgit'
+            }
+
             agent{
                 label 'microkube'
             }
