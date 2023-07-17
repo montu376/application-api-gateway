@@ -17,6 +17,65 @@ spec:
       containers:
         - name:  application-api-gateway
           image: montud/application-api-gateway:latest
+          volumeMounts:
+            - name: config
+              mountPath: "/config"
+          env:
+            - name: server.port
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: server.port
+            - name: spring.application.name
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: server.port
+            - name: spring.cloud.gateway.libraryadmin.route.id
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.libraryadmin.route.id
+            - name: spring.cloud.gateway.libraryadmin.route.uri
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.libraryadmin.route.uri
+            - name: spring.cloud.gateway.libraryadmin.route.predicates
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.libraryadmin.route.predicates
+            - name: spring.cloud.gateway.bookcatalog.route.id
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.bookcatalog.route.id
+            - name: spring.cloud.gateway.bookcatalog.route.uri
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.bookcatalog.route.uri
+            - name: spring.cloud.gateway.bookcatalog.route.predicates
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.bookcatalog.route.predicates
+            - name: spring.cloud.gateway.users.route.id
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.users.route.id
+            - name: spring.cloud.gateway.users.route.uri
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.users.route.uri
+            - name: spring.cloud.gateway.users.route.predicates
+              valueFrom:  
+                configMapKeyRef:
+                  name: application-api-gateway-config
+                  key: spring.cloud.gateway.users.route.predicates
           ports:
             - containerPort: 8080
 
