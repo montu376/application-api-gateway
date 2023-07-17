@@ -12,9 +12,7 @@ pipeline{
             agent{
                 label 'montuUbuntu'
             }
-            tools{
-                git 'linuxgit'
-            }
+            
             steps {
                 sh 'mvn package -DskipTests' 
                 sh 'docker build -t montud/application-api-gateway:latest .'
@@ -29,9 +27,6 @@ pipeline{
                 label 'montuUbuntu'
             }
 
-             tools{
-                git 'linuxgit'
-            }
             steps {
                 sh 'docker push montud/application-api-gateway:latest'
             }
@@ -45,9 +40,7 @@ pipeline{
                 label 'microkube'
             }
 
-             tools{
-                git 'linuxgit'
-            }
+          
             steps {
                 sh 'microk8s kubectl apply -f deploy.yml'
             }
