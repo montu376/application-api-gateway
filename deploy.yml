@@ -17,7 +17,7 @@ spec:
       volumes:
        - name: config
          configMap:
-          name: application-api-gateway-config
+          name:   application-api-gateway-config
       containers:
         - name:  application-api-gateway
           image: montud/application-api-gateway:latest
@@ -34,7 +34,7 @@ spec:
               valueFrom:  
                 configMapKeyRef:
                   name: application-api-gateway-config
-                  key: server.port
+                  key: spring.application.name
             - name: spring.cloud.gateway.libraryadmin.route.id
               valueFrom:  
                 configMapKeyRef:
@@ -81,7 +81,7 @@ spec:
                   name: application-api-gateway-config
                   key: spring.cloud.gateway.users.route.predicates
           ports:
-            - containerPort: 8080
+            - containerPort: 8085
 
 --- 
 apiVersion: v1

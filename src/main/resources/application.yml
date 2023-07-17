@@ -35,6 +35,4 @@ eureka:
     register-with-eureka: true
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://microservice-discovery.default.svc.cluster.local:8761/eureka}
-
-
     eureka-server-d-n-s-name: microservice-discovery.default.svc.cluster.local
